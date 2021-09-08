@@ -132,7 +132,7 @@ namespace InternetStatus
                     {
                         L_PingTitle.Visible = false;
                         L_Ping.Visible = false;
-                        PingChart.Titles["HostName"].Text = $"Default gateway: {Internet.DefaultGateway ?? System.Net.IPAddress.Parse("0.0.0.0")} (Network is unreachable)";
+                        PingChart.Titles["HostName"].Text = $"Default Gateway: {Internet.DefaultGateway ?? System.Net.IPAddress.Parse("0.0.0.0")}";
                         B_Clean.PerformClick();
                     });
                 }

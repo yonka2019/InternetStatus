@@ -82,7 +82,7 @@ namespace InternetStatus
             // 
             // B_Clean
             // 
-            this.B_Clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.B_Clean.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.B_Clean.Location = new System.Drawing.Point(706, 427);
             this.B_Clean.Name = "B_Clean";
             this.B_Clean.Size = new System.Drawing.Size(108, 44);
@@ -179,6 +179,7 @@ namespace InternetStatus
             this.PicInternet.Size = new System.Drawing.Size(75, 75);
             this.PicInternet.TabIndex = 2;
             this.PicInternet.TabStop = false;
+            this.tp.SetToolTip(this.PicInternet, "Internet");
             // 
             // PicRouter
             // 
@@ -188,6 +189,7 @@ namespace InternetStatus
             this.PicRouter.Size = new System.Drawing.Size(75, 75);
             this.PicRouter.TabIndex = 1;
             this.PicRouter.TabStop = false;
+            this.tp.SetToolTip(this.PicRouter, "Default Gateway");
             // 
             // PicPC
             // 
@@ -198,6 +200,7 @@ namespace InternetStatus
             this.PicPC.Size = new System.Drawing.Size(75, 75);
             this.PicPC.TabIndex = 0;
             this.PicPC.TabStop = false;
+            this.tp.SetToolTip(this.PicPC, "This PC");
             // 
             // MainForm
             // 
