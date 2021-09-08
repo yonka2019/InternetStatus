@@ -39,11 +39,11 @@ namespace InternetStatus
             this.NUM_UpdateFreq = new System.Windows.Forms.NumericUpDown();
             this.B_Apply = new System.Windows.Forms.Button();
             this.tp = new System.Windows.Forms.ToolTip(this.components);
-            this.TB_DGateway = new System.Windows.Forms.TextBox();
-            this.L_DGateway = new System.Windows.Forms.Label();
             this.B_Host_Reset = new System.Windows.Forms.Button();
             this.B_UpdateFreq_Reset = new System.Windows.Forms.Button();
             this.B_Timeout_Reset = new System.Windows.Forms.Button();
+            this.TB_DGateway = new System.Windows.Forms.TextBox();
+            this.L_DGateway = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Timeout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpdateFreq)).BeginInit();
             this.SuspendLayout();
@@ -62,11 +62,11 @@ namespace InternetStatus
             // 
             this.L_Timeout.AutoSize = true;
             this.L_Timeout.Font = new System.Drawing.Font("Open Sans", 12F);
-            this.L_Timeout.Location = new System.Drawing.Point(161, 94);
+            this.L_Timeout.Location = new System.Drawing.Point(124, 94);
             this.L_Timeout.Name = "L_Timeout";
-            this.L_Timeout.Size = new System.Drawing.Size(77, 22);
+            this.L_Timeout.Size = new System.Drawing.Size(114, 22);
             this.L_Timeout.TabIndex = 1;
-            this.L_Timeout.Text = "Timeout:";
+            this.L_Timeout.Text = "Timeout (ms):";
             // 
             // L_UF
             // 
@@ -143,25 +143,6 @@ namespace InternetStatus
             this.B_Apply.UseVisualStyleBackColor = true;
             this.B_Apply.Click += new System.EventHandler(this.B_Apply_Click);
             // 
-            // TB_DGateway
-            // 
-            this.TB_DGateway.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TB_DGateway.Location = new System.Drawing.Point(240, 21);
-            this.TB_DGateway.Name = "TB_DGateway";
-            this.TB_DGateway.ReadOnly = true;
-            this.TB_DGateway.Size = new System.Drawing.Size(149, 29);
-            this.TB_DGateway.TabIndex = 13;
-            // 
-            // L_DGateway
-            // 
-            this.L_DGateway.AutoSize = true;
-            this.L_DGateway.Font = new System.Drawing.Font("Open Sans", 12F);
-            this.L_DGateway.Location = new System.Drawing.Point(100, 24);
-            this.L_DGateway.Name = "L_DGateway";
-            this.L_DGateway.Size = new System.Drawing.Size(138, 22);
-            this.L_DGateway.TabIndex = 12;
-            this.L_DGateway.Text = "Default Gateway:";
-            // 
             // B_Host_Reset
             // 
             this.B_Host_Reset.Image = global::InternetStatus.Properties.Resources.Reset;
@@ -194,6 +175,25 @@ namespace InternetStatus
             this.tp.SetToolTip(this.B_Timeout_Reset, "Reset (2000)");
             this.B_Timeout_Reset.UseVisualStyleBackColor = true;
             this.B_Timeout_Reset.Click += new System.EventHandler(this.B_Timeout_Reset_Click);
+            // 
+            // TB_DGateway
+            // 
+            this.TB_DGateway.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TB_DGateway.Location = new System.Drawing.Point(240, 21);
+            this.TB_DGateway.Name = "TB_DGateway";
+            this.TB_DGateway.ReadOnly = true;
+            this.TB_DGateway.Size = new System.Drawing.Size(149, 29);
+            this.TB_DGateway.TabIndex = 13;
+            // 
+            // L_DGateway
+            // 
+            this.L_DGateway.AutoSize = true;
+            this.L_DGateway.Font = new System.Drawing.Font("Open Sans", 12F);
+            this.L_DGateway.Location = new System.Drawing.Point(100, 24);
+            this.L_DGateway.Name = "L_DGateway";
+            this.L_DGateway.Size = new System.Drawing.Size(138, 22);
+            this.L_DGateway.TabIndex = 12;
+            this.L_DGateway.Text = "Default Gateway:";
             // 
             // Settings
             // 
