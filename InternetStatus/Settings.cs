@@ -33,12 +33,12 @@ namespace InternetStatus
         }
 
         private void B_Host_Reset_Click(object sender, EventArgs e) =>
-            TB_Host.Text = "8.8.8.8";
+            TB_Host.Text = Internet.Default_Host;
 
         private void B_Timeout_Reset_Click(object sender, EventArgs e) =>
-            NUM_Timeout.Value = 2000;
+            NUM_Timeout.Value = Internet.Default_Timeout;
 
         private void B_UpdateFreq_Reset_Click(object sender, EventArgs e) =>
-            NUM_UpdateFreq.Value = 500;
+            NUM_UpdateFreq.Value = Internet.Default_UpdateFreq;
     }
 }

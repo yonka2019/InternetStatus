@@ -83,6 +83,16 @@ namespace InternetStatus.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Copyright {
+            get {
+                object obj = ResourceManager.GetObject("Copyright", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Internet_off {
             get {
                 object obj = ResourceManager.GetObject("Internet_off", resourceCulture);

@@ -13,6 +13,10 @@ namespace InternetStatus
     class Internet
     {
         private const int GatewayTimeout = 2;
+        internal const string Default_Host = "8.8.8.8";
+        internal const int Default_Timeout = 2000;
+        internal const int Default_UpdateFreq = 500;
+
         internal static bool TryDefaultGateway(Ping ping)
         {
             PingReply reply;

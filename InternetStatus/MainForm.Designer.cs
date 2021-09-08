@@ -30,10 +30,10 @@ namespace InternetStatus
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.PingChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.B_Clean = new System.Windows.Forms.Button();
@@ -41,6 +41,7 @@ namespace InternetStatus
             this.L_PingTitle = new System.Windows.Forms.Label();
             this.L_Sep = new System.Windows.Forms.Label();
             this.tp = new System.Windows.Forms.ToolTip(this.components);
+            this.CPPB = new System.Windows.Forms.PictureBox();
             this.B_Start = new System.Windows.Forms.Button();
             this.B_Settings = new System.Windows.Forms.Button();
             this.PicConnection1 = new System.Windows.Forms.PictureBox();
@@ -49,6 +50,7 @@ namespace InternetStatus
             this.PicRouter = new System.Windows.Forms.PictureBox();
             this.PicPC = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PingChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CPPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicConnection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicConnection2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInternet)).BeginInit();
@@ -58,25 +60,25 @@ namespace InternetStatus
             // 
             // PingChart
             // 
-            chartArea1.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea1.Name = "ChartArea1";
-            this.PingChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.PingChart.Legends.Add(legend1);
+            chartArea4.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea4.Name = "ChartArea1";
+            this.PingChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.PingChart.Legends.Add(legend4);
             this.PingChart.Location = new System.Drawing.Point(0, 141);
             this.PingChart.Name = "PingChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Ping (ms)";
-            series1.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.PingChart.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Ping (ms)";
+            series4.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.PingChart.Series.Add(series4);
             this.PingChart.Size = new System.Drawing.Size(827, 359);
             this.PingChart.TabIndex = 6;
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            title1.Name = "HostName";
-            title1.Text = "Host:";
-            this.PingChart.Titles.Add(title1);
+            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            title4.Name = "HostName";
+            title4.Text = "Host:";
+            this.PingChart.Titles.Add(title4);
             // 
             // B_Clean
             // 
@@ -118,6 +120,16 @@ namespace InternetStatus
             this.L_Sep.Size = new System.Drawing.Size(307, 10);
             this.L_Sep.TabIndex = 14;
             this.L_Sep.Text = "――――――――――――――――――――――――――――――――――――――――――――――――――――";
+            // 
+            // CPPB
+            // 
+            this.CPPB.Image = global::InternetStatus.Properties.Resources.Copyright;
+            this.CPPB.Location = new System.Drawing.Point(12, 57);
+            this.CPPB.Name = "CPPB";
+            this.CPPB.Size = new System.Drawing.Size(30, 30);
+            this.CPPB.TabIndex = 15;
+            this.CPPB.TabStop = false;
+            this.tp.SetToolTip(this.CPPB, "By Yonka");
             // 
             // B_Start
             // 
@@ -192,6 +204,7 @@ namespace InternetStatus
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 499);
+            this.Controls.Add(this.CPPB);
             this.Controls.Add(this.L_Sep);
             this.Controls.Add(this.L_Ping);
             this.Controls.Add(this.L_PingTitle);
@@ -213,6 +226,7 @@ namespace InternetStatus
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PingChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CPPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicConnection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicConnection2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInternet)).EndInit();
@@ -238,6 +252,7 @@ namespace InternetStatus
         private System.Windows.Forms.Label L_PingTitle;
         private System.Windows.Forms.Label L_Sep;
         private System.Windows.Forms.ToolTip tp;
+        private System.Windows.Forms.PictureBox CPPB;
     }
 }
 

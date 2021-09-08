@@ -4,6 +4,13 @@ using System.Net.NetworkInformation;
 using System.Threading;
 using System.Windows.Forms;
 
+/*
+* - - - - - - - - - - - - -
+*       Author: Yonka
+*       Date: 08.09.2021
+* - - - - - - - - - - - - -
+*/
+
 namespace InternetStatus
 {
     public partial class MainForm : Form
