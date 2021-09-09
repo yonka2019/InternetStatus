@@ -186,5 +186,10 @@ namespace InternetStatus
                 });
             }
         }
+
+        private void L_DGateway_Address_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://" + L_DGateway_Address.Text);
+        }
     }
 }

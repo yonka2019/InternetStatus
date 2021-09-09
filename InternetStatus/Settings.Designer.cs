@@ -42,8 +42,6 @@ namespace InternetStatus
             this.B_Host_Reset = new System.Windows.Forms.Button();
             this.B_UpdateFreq_Reset = new System.Windows.Forms.Button();
             this.B_Timeout_Reset = new System.Windows.Forms.Button();
-            this.TB_DGateway = new System.Windows.Forms.TextBox();
-            this.L_DGateway = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Timeout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpdateFreq)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +50,7 @@ namespace InternetStatus
             // 
             this.L_Host.AutoSize = true;
             this.L_Host.Font = new System.Drawing.Font("Open Sans", 12F);
-            this.L_Host.Location = new System.Drawing.Point(188, 61);
+            this.L_Host.Location = new System.Drawing.Point(190, 23);
             this.L_Host.Name = "L_Host";
             this.L_Host.Size = new System.Drawing.Size(50, 22);
             this.L_Host.TabIndex = 0;
@@ -62,7 +60,7 @@ namespace InternetStatus
             // 
             this.L_Timeout.AutoSize = true;
             this.L_Timeout.Font = new System.Drawing.Font("Open Sans", 12F);
-            this.L_Timeout.Location = new System.Drawing.Point(124, 94);
+            this.L_Timeout.Location = new System.Drawing.Point(126, 56);
             this.L_Timeout.Name = "L_Timeout";
             this.L_Timeout.Size = new System.Drawing.Size(114, 22);
             this.L_Timeout.TabIndex = 1;
@@ -72,7 +70,7 @@ namespace InternetStatus
             // 
             this.L_UF.AutoSize = true;
             this.L_UF.Font = new System.Drawing.Font("Open Sans", 12F);
-            this.L_UF.Location = new System.Drawing.Point(51, 128);
+            this.L_UF.Location = new System.Drawing.Point(53, 90);
             this.L_UF.Name = "L_UF";
             this.L_UF.Size = new System.Drawing.Size(187, 22);
             this.L_UF.TabIndex = 2;
@@ -81,7 +79,7 @@ namespace InternetStatus
             // TB_Host
             // 
             this.TB_Host.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TB_Host.Location = new System.Drawing.Point(240, 56);
+            this.TB_Host.Location = new System.Drawing.Point(242, 18);
             this.TB_Host.Name = "TB_Host";
             this.TB_Host.Size = new System.Drawing.Size(114, 29);
             this.TB_Host.TabIndex = 3;
@@ -89,7 +87,7 @@ namespace InternetStatus
             // NUM_Timeout
             // 
             this.NUM_Timeout.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NUM_Timeout.Location = new System.Drawing.Point(240, 91);
+            this.NUM_Timeout.Location = new System.Drawing.Point(242, 53);
             this.NUM_Timeout.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -112,7 +110,7 @@ namespace InternetStatus
             // NUM_UpdateFreq
             // 
             this.NUM_UpdateFreq.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NUM_UpdateFreq.Location = new System.Drawing.Point(240, 126);
+            this.NUM_UpdateFreq.Location = new System.Drawing.Point(242, 88);
             this.NUM_UpdateFreq.Maximum = new decimal(new int[] {
             3000,
             0,
@@ -135,7 +133,7 @@ namespace InternetStatus
             // B_Apply
             // 
             this.B_Apply.Font = new System.Drawing.Font("Open Sans", 12F);
-            this.B_Apply.Location = new System.Drawing.Point(156, 177);
+            this.B_Apply.Location = new System.Drawing.Point(156, 130);
             this.B_Apply.Name = "B_Apply";
             this.B_Apply.Size = new System.Drawing.Size(132, 40);
             this.B_Apply.TabIndex = 6;
@@ -146,7 +144,7 @@ namespace InternetStatus
             // B_Host_Reset
             // 
             this.B_Host_Reset.Image = global::InternetStatus.Properties.Resources.Reset;
-            this.B_Host_Reset.Location = new System.Drawing.Point(360, 56);
+            this.B_Host_Reset.Location = new System.Drawing.Point(362, 18);
             this.B_Host_Reset.Name = "B_Host_Reset";
             this.B_Host_Reset.Size = new System.Drawing.Size(29, 29);
             this.B_Host_Reset.TabIndex = 9;
@@ -157,7 +155,7 @@ namespace InternetStatus
             // B_UpdateFreq_Reset
             // 
             this.B_UpdateFreq_Reset.Image = global::InternetStatus.Properties.Resources.Reset;
-            this.B_UpdateFreq_Reset.Location = new System.Drawing.Point(360, 126);
+            this.B_UpdateFreq_Reset.Location = new System.Drawing.Point(362, 88);
             this.B_UpdateFreq_Reset.Name = "B_UpdateFreq_Reset";
             this.B_UpdateFreq_Reset.Size = new System.Drawing.Size(29, 29);
             this.B_UpdateFreq_Reset.TabIndex = 8;
@@ -168,7 +166,7 @@ namespace InternetStatus
             // B_Timeout_Reset
             // 
             this.B_Timeout_Reset.Image = global::InternetStatus.Properties.Resources.Reset;
-            this.B_Timeout_Reset.Location = new System.Drawing.Point(360, 91);
+            this.B_Timeout_Reset.Location = new System.Drawing.Point(362, 53);
             this.B_Timeout_Reset.Name = "B_Timeout_Reset";
             this.B_Timeout_Reset.Size = new System.Drawing.Size(29, 29);
             this.B_Timeout_Reset.TabIndex = 7;
@@ -176,33 +174,12 @@ namespace InternetStatus
             this.B_Timeout_Reset.UseVisualStyleBackColor = true;
             this.B_Timeout_Reset.Click += new System.EventHandler(this.B_Timeout_Reset_Click);
             // 
-            // TB_DGateway
-            // 
-            this.TB_DGateway.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TB_DGateway.Location = new System.Drawing.Point(240, 21);
-            this.TB_DGateway.Name = "TB_DGateway";
-            this.TB_DGateway.ReadOnly = true;
-            this.TB_DGateway.Size = new System.Drawing.Size(149, 29);
-            this.TB_DGateway.TabIndex = 13;
-            // 
-            // L_DGateway
-            // 
-            this.L_DGateway.AutoSize = true;
-            this.L_DGateway.Font = new System.Drawing.Font("Open Sans", 12F);
-            this.L_DGateway.Location = new System.Drawing.Point(100, 24);
-            this.L_DGateway.Name = "L_DGateway";
-            this.L_DGateway.Size = new System.Drawing.Size(138, 22);
-            this.L_DGateway.TabIndex = 12;
-            this.L_DGateway.Text = "Default Gateway:";
-            // 
             // Settings
             // 
             this.AcceptButton = this.B_Apply;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 229);
-            this.Controls.Add(this.TB_DGateway);
-            this.Controls.Add(this.L_DGateway);
+            this.ClientSize = new System.Drawing.Size(444, 182);
             this.Controls.Add(this.B_Host_Reset);
             this.Controls.Add(this.B_UpdateFreq_Reset);
             this.Controls.Add(this.B_Timeout_Reset);
@@ -241,7 +218,5 @@ namespace InternetStatus
         private System.Windows.Forms.Button B_UpdateFreq_Reset;
         private System.Windows.Forms.Button B_Host_Reset;
         private System.Windows.Forms.ToolTip tp;
-        private System.Windows.Forms.TextBox TB_DGateway;
-        private System.Windows.Forms.Label L_DGateway;
     }
 }

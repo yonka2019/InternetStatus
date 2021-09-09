@@ -14,7 +14,6 @@ namespace InternetStatus
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            TB_DGateway.Text = (Internet.DefaultGateway ?? System.Net.IPAddress.Parse("0.0.0.0")).ToString();
             TB_Host.Text = Properties.Settings.Default.Host;
             NUM_Timeout.Value = Properties.Settings.Default.Timeout;
             NUM_UpdateFreq.Value = Properties.Settings.Default.UpdateFreq;
