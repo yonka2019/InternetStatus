@@ -30,10 +30,9 @@ namespace InternetStatus
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.PingChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.B_Clean = new System.Windows.Forms.Button();
@@ -44,46 +43,45 @@ namespace InternetStatus
             this.CPPB = new System.Windows.Forms.PictureBox();
             this.B_Start = new System.Windows.Forms.Button();
             this.B_Settings = new System.Windows.Forms.Button();
-            this.PicConnection1 = new System.Windows.Forms.PictureBox();
-            this.PicConnection2 = new System.Windows.Forms.PictureBox();
             this.PicInternet = new System.Windows.Forms.PictureBox();
             this.PicRouter = new System.Windows.Forms.PictureBox();
             this.PicPC = new System.Windows.Forms.PictureBox();
+            this.PicConnection1 = new System.Windows.Forms.PictureBox();
+            this.PicConnection2 = new System.Windows.Forms.PictureBox();
+            this.L_DGateway_Address = new System.Windows.Forms.Label();
+            this.L_PC_Address = new System.Windows.Forms.Label();
+            this.L_Host_Address = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PingChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CPPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicConnection1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicConnection2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInternet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRouter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicConnection1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicConnection2)).BeginInit();
             this.SuspendLayout();
             // 
             // PingChart
             // 
-            chartArea4.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea4.Name = "ChartArea1";
-            this.PingChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.PingChart.Legends.Add(legend4);
-            this.PingChart.Location = new System.Drawing.Point(0, 141);
+            chartArea1.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea1.Name = "ChartArea1";
+            this.PingChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.PingChart.Legends.Add(legend1);
+            this.PingChart.Location = new System.Drawing.Point(0, 161);
             this.PingChart.Name = "PingChart";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Ping (ms)";
-            series4.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.PingChart.Series.Add(series4);
-            this.PingChart.Size = new System.Drawing.Size(827, 359);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Ping (ms)";
+            series1.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.PingChart.Series.Add(series1);
+            this.PingChart.Size = new System.Drawing.Size(827, 368);
             this.PingChart.TabIndex = 6;
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            title4.Name = "HostName";
-            title4.Text = "Host:";
-            this.PingChart.Titles.Add(title4);
             // 
             // B_Clean
             // 
             this.B_Clean.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.B_Clean.Location = new System.Drawing.Point(706, 427);
+            this.B_Clean.Location = new System.Drawing.Point(706, 462);
             this.B_Clean.Name = "B_Clean";
             this.B_Clean.Size = new System.Drawing.Size(108, 44);
             this.B_Clean.TabIndex = 9;
@@ -95,7 +93,7 @@ namespace InternetStatus
             // 
             this.L_Ping.AutoSize = true;
             this.L_Ping.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.L_Ping.Location = new System.Drawing.Point(412, 107);
+            this.L_Ping.Location = new System.Drawing.Point(411, 127);
             this.L_Ping.Name = "L_Ping";
             this.L_Ping.Size = new System.Drawing.Size(60, 26);
             this.L_Ping.TabIndex = 13;
@@ -106,7 +104,7 @@ namespace InternetStatus
             // 
             this.L_PingTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.L_PingTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.L_PingTitle.Location = new System.Drawing.Point(356, 105);
+            this.L_PingTitle.Location = new System.Drawing.Point(355, 125);
             this.L_PingTitle.Name = "L_PingTitle";
             this.L_PingTitle.Size = new System.Drawing.Size(62, 26);
             this.L_PingTitle.TabIndex = 12;
@@ -115,7 +113,7 @@ namespace InternetStatus
             // 
             // L_Sep
             // 
-            this.L_Sep.Location = new System.Drawing.Point(260, 97);
+            this.L_Sep.Location = new System.Drawing.Point(260, 115);
             this.L_Sep.Name = "L_Sep";
             this.L_Sep.Size = new System.Drawing.Size(307, 10);
             this.L_Sep.TabIndex = 14;
@@ -124,7 +122,7 @@ namespace InternetStatus
             // CPPB
             // 
             this.CPPB.Image = global::InternetStatus.Properties.Resources.Copyright;
-            this.CPPB.Location = new System.Drawing.Point(12, 57);
+            this.CPPB.Location = new System.Drawing.Point(12, 125);
             this.CPPB.Name = "CPPB";
             this.CPPB.Size = new System.Drawing.Size(30, 30);
             this.CPPB.TabIndex = 15;
@@ -134,7 +132,7 @@ namespace InternetStatus
             // B_Start
             // 
             this.B_Start.Image = global::InternetStatus.Properties.Resources.Start;
-            this.B_Start.Location = new System.Drawing.Point(740, 231);
+            this.B_Start.Location = new System.Drawing.Point(740, 261);
             this.B_Start.Name = "B_Start";
             this.B_Start.Size = new System.Drawing.Size(40, 40);
             this.B_Start.TabIndex = 11;
@@ -145,31 +143,13 @@ namespace InternetStatus
             // B_Settings
             // 
             this.B_Settings.Image = global::InternetStatus.Properties.Resources.Settings;
-            this.B_Settings.Location = new System.Drawing.Point(740, 318);
+            this.B_Settings.Location = new System.Drawing.Point(740, 356);
             this.B_Settings.Name = "B_Settings";
             this.B_Settings.Size = new System.Drawing.Size(40, 40);
             this.B_Settings.TabIndex = 10;
             this.tp.SetToolTip(this.B_Settings, "Settings");
             this.B_Settings.UseVisualStyleBackColor = true;
             this.B_Settings.Click += new System.EventHandler(this.B_Settings_Click);
-            // 
-            // PicConnection1
-            // 
-            this.PicConnection1.Image = ((System.Drawing.Image)(resources.GetObject("PicConnection1.Image")));
-            this.PicConnection1.Location = new System.Drawing.Point(243, 22);
-            this.PicConnection1.Name = "PicConnection1";
-            this.PicConnection1.Size = new System.Drawing.Size(55, 55);
-            this.PicConnection1.TabIndex = 8;
-            this.PicConnection1.TabStop = false;
-            // 
-            // PicConnection2
-            // 
-            this.PicConnection2.Image = ((System.Drawing.Image)(resources.GetObject("PicConnection2.Image")));
-            this.PicConnection2.Location = new System.Drawing.Point(529, 22);
-            this.PicConnection2.Name = "PicConnection2";
-            this.PicConnection2.Size = new System.Drawing.Size(55, 55);
-            this.PicConnection2.TabIndex = 7;
-            this.PicConnection2.TabStop = false;
             // 
             // PicInternet
             // 
@@ -195,18 +175,72 @@ namespace InternetStatus
             // 
             this.PicPC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PicPC.Image = ((System.Drawing.Image)(resources.GetObject("PicPC.Image")));
-            this.PicPC.Location = new System.Drawing.Point(79, 12);
+            this.PicPC.Location = new System.Drawing.Point(78, 12);
             this.PicPC.Name = "PicPC";
             this.PicPC.Size = new System.Drawing.Size(75, 75);
             this.PicPC.TabIndex = 0;
             this.PicPC.TabStop = false;
             this.tp.SetToolTip(this.PicPC, "This PC");
             // 
+            // PicConnection1
+            // 
+            this.PicConnection1.Image = ((System.Drawing.Image)(resources.GetObject("PicConnection1.Image")));
+            this.PicConnection1.Location = new System.Drawing.Point(243, 22);
+            this.PicConnection1.Name = "PicConnection1";
+            this.PicConnection1.Size = new System.Drawing.Size(55, 55);
+            this.PicConnection1.TabIndex = 8;
+            this.PicConnection1.TabStop = false;
+            // 
+            // PicConnection2
+            // 
+            this.PicConnection2.Image = ((System.Drawing.Image)(resources.GetObject("PicConnection2.Image")));
+            this.PicConnection2.Location = new System.Drawing.Point(529, 22);
+            this.PicConnection2.Name = "PicConnection2";
+            this.PicConnection2.Size = new System.Drawing.Size(55, 55);
+            this.PicConnection2.TabIndex = 7;
+            this.PicConnection2.TabStop = false;
+            // 
+            // L_DGateway_Address
+            // 
+            this.L_DGateway_Address.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_DGateway_Address.Font = new System.Drawing.Font("Open Sans", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.L_DGateway_Address.Location = new System.Drawing.Point(320, 90);
+            this.L_DGateway_Address.Name = "L_DGateway_Address";
+            this.L_DGateway_Address.Size = new System.Drawing.Size(186, 19);
+            this.L_DGateway_Address.TabIndex = 20;
+            this.L_DGateway_Address.Text = "Address";
+            this.L_DGateway_Address.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_PC_Address
+            // 
+            this.L_PC_Address.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_PC_Address.Font = new System.Drawing.Font("Open Sans", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.L_PC_Address.Location = new System.Drawing.Point(22, 90);
+            this.L_PC_Address.Name = "L_PC_Address";
+            this.L_PC_Address.Size = new System.Drawing.Size(186, 19);
+            this.L_PC_Address.TabIndex = 21;
+            this.L_PC_Address.Text = "Address";
+            this.L_PC_Address.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_Host_Address
+            // 
+            this.L_Host_Address.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Host_Address.Font = new System.Drawing.Font("Open Sans", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.L_Host_Address.Location = new System.Drawing.Point(617, 90);
+            this.L_Host_Address.Name = "L_Host_Address";
+            this.L_Host_Address.Size = new System.Drawing.Size(186, 19);
+            this.L_Host_Address.TabIndex = 22;
+            this.L_Host_Address.Text = "Address";
+            this.L_Host_Address.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 499);
+            this.ClientSize = new System.Drawing.Size(826, 528);
+            this.Controls.Add(this.L_Host_Address);
+            this.Controls.Add(this.L_PC_Address);
+            this.Controls.Add(this.L_DGateway_Address);
             this.Controls.Add(this.CPPB);
             this.Controls.Add(this.L_Sep);
             this.Controls.Add(this.L_Ping);
@@ -230,11 +264,11 @@ namespace InternetStatus
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PingChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CPPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicConnection1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicConnection2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInternet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRouter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicConnection1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicConnection2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,6 +290,9 @@ namespace InternetStatus
         private System.Windows.Forms.Label L_Sep;
         private System.Windows.Forms.ToolTip tp;
         private System.Windows.Forms.PictureBox CPPB;
+        private System.Windows.Forms.Label L_DGateway_Address;
+        private System.Windows.Forms.Label L_PC_Address;
+        private System.Windows.Forms.Label L_Host_Address;
     }
 }
 

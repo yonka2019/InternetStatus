@@ -28,7 +28,7 @@ namespace InternetStatus
 
             Properties.Settings.Default.Save();
 
-            f.UpdateHost();
+            f.UpdateData();
             Close();
         }
 

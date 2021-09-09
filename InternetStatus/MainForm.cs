@@ -24,8 +24,15 @@ namespace InternetStatus
             InitializeComponent();
         }
 
-        internal void UpdateHost() =>
-            PingChart.Titles["HostName"].Text = $"Host: {Properties.Settings.Default.Host}";
+        internal void UpdateData()
+        {
+            Invoke((MethodInvoker)delegate
+            {
+                L_PC_Address.Text = Internet.LocalAddress.ToString();
+                L_DGateway_Address.Text = Internet.DefaultGateway.ToString();
+                L_Host_Address.Text = Properties.Settings.Default.Host;
+            });
+        }
 
         private void B_Start_Click(object sender, EventArgs e)
         {
@@ -44,6 +51,7 @@ namespace InternetStatus
         }
         private void DrawConnection(Connections connection)
         {
+            UpdateData();
             switch (connection)
             {
                 case Connections.PC:
@@ -85,7 +93,6 @@ namespace InternetStatus
                     {
                         L_PingTitle.Visible = true;
                         L_Ping.Visible = true;
-                        UpdateHost();
                     });
                     try
                     {
@@ -132,7 +139,6 @@ namespace InternetStatus
                     {
                         L_PingTitle.Visible = false;
                         L_Ping.Visible = false;
-                        PingChart.Titles["HostName"].Text = $"Default Gateway: {Internet.DefaultGateway ?? System.Net.IPAddress.Parse("0.0.0.0")}";
                         B_Clean.PerformClick();
                     });
                 }
@@ -167,7 +173,7 @@ namespace InternetStatus
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            UpdateHost();
+            UpdateData();
             B_Start.PerformClick();
         }
         private string InternetStatusT

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Net.Sockets;
 
 namespace InternetStatus
 {
@@ -31,7 +32,7 @@ namespace InternetStatus
             }
             return reply.Status == IPStatus.Success;
         }
-
+        //Default Gateway Property
         #region https://stackoverflow.com/questions/13634868/get-the-default-gateway (DefaultGateway Property)
         internal static IPAddress DefaultGateway => NetworkInterface
                 .GetAllNetworkInterfaces()
@@ -40,6 +41,23 @@ namespace InternetStatus
                 .SelectMany(n => n.GetIPProperties()?.GatewayAddresses)
                 .Select(g => g?.Address)
                 .FirstOrDefault(a => a != null);
+        #endregion
+
+
+        //Local Address Property
+        #region https://stackoverflow.com/questions/6803073/get-local-ip-address (LocalAddress Property)
+        internal static IPAddress LocalAddress => NetworkInterface
+        .GetAllNetworkInterfaces()
+        .FirstOrDefault(ni =>
+            ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet
+            && ni.OperationalStatus == OperationalStatus.Up
+            && ni.GetIPProperties().GatewayAddresses.FirstOrDefault() != null
+            && ni.GetIPProperties().UnicastAddresses.FirstOrDefault(ip => ip.Address.AddressFamily == AddressFamily.InterNetwork) != null
+        )
+        ?.GetIPProperties()
+        .UnicastAddresses
+        .FirstOrDefault(ip => ip.Address.AddressFamily == AddressFamily.InterNetwork)
+        ?.Address;
         #endregion
     }
 }
