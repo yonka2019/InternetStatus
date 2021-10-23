@@ -30,9 +30,9 @@ namespace InternetStatus
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.PingChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.B_Clean = new System.Windows.Forms.Button();
@@ -62,19 +62,19 @@ namespace InternetStatus
             // 
             // PingChart
             // 
-            chartArea1.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea1.Name = "ChartArea1";
-            this.PingChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.PingChart.Legends.Add(legend1);
+            chartArea4.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea4.Name = "ChartArea1";
+            this.PingChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.PingChart.Legends.Add(legend4);
             this.PingChart.Location = new System.Drawing.Point(0, 161);
             this.PingChart.Name = "PingChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Ping (ms)";
-            series1.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
-            this.PingChart.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Ping (ms)";
+            series4.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.PingChart.Series.Add(series4);
             this.PingChart.Size = new System.Drawing.Size(827, 368);
             this.PingChart.TabIndex = 6;
             // 
@@ -183,7 +183,7 @@ namespace InternetStatus
             this.PicPC.TabIndex = 0;
             this.PicPC.TabStop = false;
             this.tp.SetToolTip(this.PicPC, "This PC");
-            this.PicPC.Click += new System.EventHandler(this.PicPC_Click);
+            this.PicPC.Click += new System.EventHandler(this.Open_ncpa_cpl);
             // 
             // L_DGateway_Address
             // 
@@ -226,6 +226,7 @@ namespace InternetStatus
             this.L_PC_Address.TabIndex = 21;
             this.L_PC_Address.Text = "Address";
             this.L_PC_Address.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_PC_Address.Click += new System.EventHandler(this.Open_ncpa_cpl);
             // 
             // L_Host_Address
             // 

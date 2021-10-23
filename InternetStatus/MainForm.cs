@@ -227,13 +227,12 @@ namespace InternetStatus
             Process.Start("http://" + Internet.DefaultGateway.ToString());
         }
 
-        private void PicPC_Click(object sender, EventArgs e)
+        private void Open_ncpa_cpl(object sender, EventArgs e)
         {
             ProcessStartInfo info = new ProcessStartInfo("ncpa.cpl")
             {
                 UseShellExecute = true
             };
-
             Process.Start(info);
         }
     }
