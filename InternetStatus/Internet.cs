@@ -5,13 +5,14 @@ using System.Net.Sockets;
 
 namespace InternetStatus
 {
-    enum Connections // Working till ->>
+    internal enum Connections // Working till ->>
     {
         PC,
         Router,
         Internet
     }
-    class Internet
+
+    internal class Internet
     {
         private const int GatewayTimeout = 2;
         internal const string Default_Host = "8.8.8.8";

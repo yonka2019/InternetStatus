@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Net.NetworkInformation;
 using System.Threading;
@@ -118,9 +119,13 @@ namespace InternetStatus
                         PingReply reply = ping.Send(Properties.Settings.Default.Host, Properties.Settings.Default.Timeout);
 
                         if (reply.Status == IPStatus.Success)
+                        {
                             DrawConnection(Connections.Internet);
+                        }
                         else
+                        {
                             DrawConnection(Connections.Router);
+                        }
 
                         pingArray[pingArray.Length - 1] = reply.RoundtripTime;
 
@@ -129,15 +134,26 @@ namespace InternetStatus
                         Invoke((MethodInvoker)delegate
                         {
                             if (reply.RoundtripTime > 149 || reply.RoundtripTime == 0)
+                            {
                                 L_Ping.ForeColor = Color.Red;
+                            }
                             else if (reply.RoundtripTime > 89 && reply.RoundtripTime < 150)
+                            {
                                 L_Ping.ForeColor = Color.Orange;
+                            }
                             else
+                            {
                                 L_Ping.ForeColor = Color.Green;
+                            }
+
                             if (reply.Status == IPStatus.TimedOut)
+                            {
                                 L_Ping.Text = $"{Properties.Settings.Default.Timeout}+ ms";
+                            }
                             else
+                            {
                                 L_Ping.Text = $"{reply.RoundtripTime} ms";
+                            }
 
                             UpdatePingChart();
                         });
@@ -169,7 +185,9 @@ namespace InternetStatus
         {
             PingChart.Series["Ping (ms)"].Points.Clear();
             for (int i = 0; i < pingArray.Length - 1; i++)
+            {
                 PingChart.Series["Ping (ms)"].Points.AddY(pingArray[i]);
+            }
         }
 
         private void B_Settings_Click(object sender, EventArgs e)
@@ -195,20 +213,28 @@ namespace InternetStatus
             UpdateData();
             B_Start.PerformClick();
         }
+
         private string InternetStatusT
         {
-            set
-            {
-                Invoke((MethodInvoker)delegate
-                {
-                    Text = $"Internet Status ({value})";
-                });
-            }
+            set => Invoke((MethodInvoker)delegate
+                 {
+                     Text = $"Internet Status ({value})";
+                 });
         }
 
-        private void L_DGateway_Address_Click(object sender, EventArgs e)
+        private void Open_Gateway_web(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://" + L_DGateway_Address.Text);
+            Process.Start("http://" + Internet.DefaultGateway.ToString());
+        }
+
+        private void PicPC_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo info = new ProcessStartInfo("ncpa.cpl")
+            {
+                UseShellExecute = true
+            };
+
+            Process.Start(info);
         }
     }
 }
