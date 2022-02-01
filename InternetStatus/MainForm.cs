@@ -22,10 +22,12 @@ namespace InternetStatus
 
         private const string BLACK_HEX_COLOR = "#FF000000";
         private const string GRAY_HEX_COLOR = "#FF848484";
+        private const string VERSION = "1.1";
 
         public MainForm()
         {
             InitializeComponent();
+            tp.SetToolTip(CPPB, $"{tp.GetToolTip(CPPB)} (v{VERSION})");
         }
 
         internal void UpdateData()
