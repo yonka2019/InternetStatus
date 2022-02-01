@@ -20,8 +20,8 @@ namespace InternetStatus
         private readonly Ping ping = new Ping();
         private bool working = false;
 
-        private const string BLACK_HEX_COLOR = "#FF000000";
-        private const string GRAY_HEX_COLOR = "#FF848484";
+        private const string ON_BLACK_HEX_COLOR = "#FF000000";
+        private const string OFF_GRAY_HEX_COLOR = "#FF848484";
         private const string VERSION = "1.1";
 
         public MainForm()
@@ -64,43 +64,42 @@ namespace InternetStatus
                     InternetStatusT = "Network is unreachable";
                     PicPC.Image = Properties.Resources.PC_on;
                     PicConnection1.Image = Properties.Resources.Connection_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(GRAY_HEX_COLOR);
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
 
                     PicRouter.Image = Properties.Resources.Router_off;
                     PicConnection2.Image = Properties.Resources.Connection_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(GRAY_HEX_COLOR);
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
 
                     PicInternet.Image = Properties.Resources.Internet_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(GRAY_HEX_COLOR);
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
                     break;
 
                 case Connections.Router:
                     InternetStatusT = "No Internet";
                     PicPC.Image = Properties.Resources.PC_on;
                     PicConnection1.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(BLACK_HEX_COLOR);
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
                     PicRouter.Image = Properties.Resources.Router_on;
                     PicConnection2.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(BLACK_HEX_COLOR);
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
                     PicInternet.Image = Properties.Resources.Internet_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(GRAY_HEX_COLOR);
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
                     break;
 
                 case Connections.Internet:
                     InternetStatusT = "Connected";
                     PicPC.Image = Properties.Resources.PC_on;
                     PicConnection1.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(BLACK_HEX_COLOR);
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
                     PicRouter.Image = Properties.Resources.Router_on;
                     PicConnection2.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(BLACK_HEX_COLOR);
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
                     PicInternet.Image = Properties.Resources.Internet_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(BLACK_HEX_COLOR);
-
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
                     break;
             }
         }
