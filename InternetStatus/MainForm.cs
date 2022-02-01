@@ -79,7 +79,7 @@ namespace InternetStatus
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(BLACK_HEX_COLOR);
 
                     PicRouter.Image = Properties.Resources.Router_on;
-                    PicConnection2.Image = Properties.Resources.Connection_off;
+                    PicConnection2.Image = Properties.Resources.Connection_on;
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(BLACK_HEX_COLOR);
 
                     PicInternet.Image = Properties.Resources.Internet_off;
