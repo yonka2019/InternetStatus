@@ -75,7 +75,7 @@ namespace InternetStatus
                     break;
 
                 case Connections.Router:
-                    InternetStatusT = "No Internet";
+                    InternetStatusT = "No connection";
                     PicPC.Image = Properties.Resources.PC_on;
                     PicConnection1.Image = Properties.Resources.Connection_on;
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
@@ -120,13 +120,9 @@ namespace InternetStatus
                         PingReply reply = ping.Send(Properties.Settings.Default.Host, Properties.Settings.Default.Timeout);
 
                         if (reply.Status == IPStatus.Success)
-                        {
                             DrawConnection(Connections.Internet);
-                        }
                         else
-                        {
                             DrawConnection(Connections.Router);
-                        }
 
                         pingArray[pingArray.Length - 1] = reply.RoundtripTime;
 
@@ -135,26 +131,16 @@ namespace InternetStatus
                         Invoke((MethodInvoker)delegate
                         {
                             if (reply.RoundtripTime > 149 || reply.RoundtripTime == 0)
-                            {
                                 L_Ping.ForeColor = Color.Red;
-                            }
                             else if (reply.RoundtripTime > 89 && reply.RoundtripTime < 150)
-                            {
                                 L_Ping.ForeColor = Color.Orange;
-                            }
                             else
-                            {
                                 L_Ping.ForeColor = Color.Green;
-                            }
 
                             if (reply.Status == IPStatus.TimedOut)
-                            {
                                 L_Ping.Text = $"{Properties.Settings.Default.Timeout}+ ms";
-                            }
                             else
-                            {
                                 L_Ping.Text = $"{reply.RoundtripTime} ms";
-                            }
 
                             UpdatePingChart();
                         });
@@ -223,10 +209,8 @@ namespace InternetStatus
                  });
         }
 
-        private void Open_Gateway_web(object sender, EventArgs e)
-        {
+        private void Open_Gateway_web(object sender, EventArgs e) =>
             Process.Start("http://" + Internet.DefaultGateway.ToString());
-        }
 
         private void Open_ncpa_cpl(object sender, EventArgs e)
         {
