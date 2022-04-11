@@ -14,7 +14,7 @@ namespace InternetStatus
 
     internal class Internet
     {
-        private const int GatewayTimeout = 23;
+        private const int GatewayTimeout = 2;
         internal const string Default_Host = "8.8.8.8";
         internal const int Default_Timeout = 2000;
         internal const int Default_UpdateFreq = 500;
