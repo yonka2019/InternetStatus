@@ -2,4 +2,4 @@
 Live Internet Status
 
 # Preview
-![alt text](https://i.ibb.co/BCCnj7d/pingstatus.png)
+![preview1](https://i.ibb.co/BCCnj7d/pingstatus.png)
