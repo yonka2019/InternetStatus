@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Windows.Forms;
+using darknet.forms;
 
 /*
 * - - - - - - - - - - - - -
@@ -16,6 +18,7 @@ namespace InternetStatus
 {
     public partial class MainForm : Form
     {
+        public static bool darkModeActivated = false;
         private readonly double[] pingArray = new double[60];
         private readonly Ping ping = new Ping();
         private bool working = false;
@@ -30,12 +33,26 @@ namespace InternetStatus
             tp.SetToolTip(CPPB, $"{tp.GetToolTip(CPPB)} (v{VERSION})");
         }
 
+        public MainForm(bool darkModeActivated) : this()// dark mode changed
+        {
+            if (darkModeActivated)
+            {
+                DarkModeButton.Image = Properties.Resources.sun_25px;
+                tp.SetToolTip(DarkModeButton, "Disable Dark mode");
+            }
+            else
+            {
+                DarkModeButton.Image = Properties.Resources.first_quarter_25px;
+                tp.SetToolTip(DarkModeButton, "Enable Dark mode");
+            }
+        }
+
         internal void UpdateData()
         {
             Invoke((MethodInvoker)delegate
             {
                 L_PC_Address.Text = Internet.LocalAddress.ToString();
-                L_DGateway_Address.Text = Internet.DefaultGateway.ToString();
+                L_DGateway_Address.Text = Internet.DefaultGateway == null ? "?": Internet.DefaultGateway.ToString();
                 L_Host_Address.Text = Properties.Settings.Default.Host;
             });
         }
@@ -219,6 +236,17 @@ namespace InternetStatus
                 UseShellExecute = true
             };
             Process.Start(info);
+        }
+
+        private void DarkModeButton_Click(object sender, EventArgs e)
+        {
+            darkModeActivated = !darkModeActivated;
+
+            MainForm form = new MainForm(darkModeActivated);
+            DarkNet.SetDarkModeAllowedForWindow(form, darkModeActivated);
+            Hide();
+            form.ShowDialog();
+            Close();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using darknet.forms;
 
 namespace InternetStatus
 {
@@ -13,6 +14,7 @@ namespace InternetStatus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DarkNet.SetDarkModeAllowedForProcess(true);
             Application.Run(new MainForm());
         }
     }

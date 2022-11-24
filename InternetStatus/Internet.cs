@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Text;
 
 namespace InternetStatus
 {
@@ -35,13 +36,21 @@ namespace InternetStatus
         }
         //Default Gateway Property
         #region https://stackoverflow.com/questions/13634868/get-the-default-gateway (DefaultGateway Property)
-        internal static IPAddress DefaultGateway => NetworkInterface
-                .GetAllNetworkInterfaces()
-                .Where(n => n.OperationalStatus == OperationalStatus.Up)
-                .Where(n => n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
-                .SelectMany(n => n.GetIPProperties()?.GatewayAddresses)
-                .Select(g => g?.Address)
-                .FirstOrDefault(a => a != null);
+        //internal static IPAddress DefaultGateway => NetworkInterface
+        //        .GetAllNetworkInterfaces()
+        //        .Where(n => n.OperationalStatus == OperationalStatus.Up)
+        //        .Where(n => n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+        //        .SelectMany(n => n.GetIPProperties()?.GatewayAddresses)
+        //        .Select(g => g?.Address)
+        //        .FirstOrDefault(a => a != null);
+
+        internal static string DefaultGateway
+        {
+            get
+            {
+                return "192.168.1.1";
+            }
+        }
         #endregion
 
 
