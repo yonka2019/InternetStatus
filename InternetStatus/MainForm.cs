@@ -1,11 +1,10 @@
-﻿using System;
+﻿using darknet.forms;
+using System;
 using System.Diagnostics;
-using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Windows.Forms;
-using darknet.forms;
 
 /*
 * - - - - - - - - - - - - -
@@ -51,8 +50,8 @@ namespace InternetStatus
         {
             Invoke((MethodInvoker)delegate
             {
-                L_PC_Address.Text = Internet.LocalAddress.ToString();
-                L_DGateway_Address.Text = Internet.DefaultGateway == null ? "?": Internet.DefaultGateway.ToString();
+                L_PC_Address.Text = Internet.LocalAddress == null ? "" : Internet.LocalAddress.ToString();
+                L_DGateway_Address.Text = Internet.DefaultGateway == null ? "" : Internet.DefaultGateway.ToString();
                 L_Host_Address.Text = Properties.Settings.Default.Host;
             });
         }
@@ -149,15 +148,9 @@ namespace InternetStatus
                         {
                             if (reply.RoundtripTime > 149 || reply.RoundtripTime == 0)
                                 L_Ping.ForeColor = Color.Red;
-                            else if (reply.RoundtripTime > 89 && reply.RoundtripTime < 150)
-                                L_Ping.ForeColor = Color.Orange;
-                            else
-                                L_Ping.ForeColor = Color.Green;
+                            else L_Ping.ForeColor = reply.RoundtripTime > 89 && reply.RoundtripTime < 150 ? Color.Orange : Color.Green;
 
-                            if (reply.Status == IPStatus.TimedOut)
-                                L_Ping.Text = $"{Properties.Settings.Default.Timeout}+ ms";
-                            else
-                                L_Ping.Text = $"{reply.RoundtripTime} ms";
+                            L_Ping.Text = reply.Status == IPStatus.TimedOut ? $"{Properties.Settings.Default.Timeout}+ ms" : $"{reply.RoundtripTime} ms";
 
                             UpdatePingChart();
                         });
@@ -226,8 +219,10 @@ namespace InternetStatus
                  });
         }
 
-        private void Open_Gateway_web(object sender, EventArgs e) =>
+        private void Open_Gateway_web(object sender, EventArgs e)
+        {
             Process.Start("http://" + Internet.DefaultGateway.ToString());
+        }
 
         private void Open_ncpa_cpl(object sender, EventArgs e)
         {
