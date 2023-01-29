@@ -122,6 +122,7 @@ namespace InternetStatus.Properties {
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
+<<<<<<< HEAD
         /// </summary>
         internal static System.Drawing.Bitmap PC_off {
             get {
@@ -132,6 +133,8 @@ namespace InternetStatus.Properties {
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
+=======
+>>>>>>> d9722fd014fc2b73634d2f5931a5b62ab73a91db
         /// </summary>
         internal static System.Drawing.Bitmap PC_on {
             get {

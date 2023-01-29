@@ -1,10 +1,12 @@
 ﻿using darknet.forms;
 using System;
 using System.Diagnostics;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Windows.Forms;
+using darknet.forms;
 
 /*
 * - - - - - - - - - - - - -
@@ -50,8 +52,13 @@ namespace InternetStatus
         {
             Invoke((MethodInvoker)delegate
             {
+<<<<<<< HEAD
                 L_PC_Address.Text = NetworkInterface.LocalAddress == null ? "" : NetworkInterface.LocalAddress.ToString();
                 L_DGateway_Address.Text = NetworkInterface.DefaultGateway == null ? "" : NetworkInterface.DefaultGateway.ToString();
+=======
+                L_PC_Address.Text = Internet.LocalAddress.ToString();
+                L_DGateway_Address.Text = Internet.DefaultGateway == null ? "?": Internet.DefaultGateway.ToString();
+>>>>>>> d9722fd014fc2b73634d2f5931a5b62ab73a91db
                 L_Host_Address.Text = Properties.Settings.Default.Host;
             });
         }

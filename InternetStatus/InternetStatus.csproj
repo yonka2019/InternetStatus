@@ -152,7 +152,10 @@
     <None Include="Resources\reset_20px.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Resources\pc_off.png" />
+=======
+>>>>>>> d9722fd014fc2b73634d2f5931a5b62ab73a91db
     <None Include="Resources\sun_25px.png" />
     <None Include="Resources\copyright_30px.png" />
     <None Include="Resources\first_quarter_25px.png" />
