@@ -2,7 +2,6 @@
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Text;
 
 namespace InternetStatus
 {
@@ -47,13 +46,7 @@ namespace InternetStatus
         //        .Select(g => g?.Address)
         //        .FirstOrDefault(a => a != null);
 
-        internal static string DefaultGateway
-        {
-            get
-            {
-                return "192.168.1.1";
-            }
-        }
+        internal static string DefaultGateway => "192.168.1.1";
         #endregion
 
 

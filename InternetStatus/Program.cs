@@ -1,6 +1,6 @@
-﻿using System;
+﻿using darknet.forms;
+using System;
 using System.Windows.Forms;
-using darknet.forms;
 
 namespace InternetStatus
 {

@@ -1,12 +1,10 @@
 ﻿using darknet.forms;
 using System;
 using System.Diagnostics;
-using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Windows.Forms;
-using darknet.forms;
 
 /*
 * - - - - - - - - - - - - -
@@ -55,7 +53,7 @@ namespace InternetStatus
                 L_PC_Address.Text = NetworkInterface.LocalAddress == null ? "" : NetworkInterface.LocalAddress.ToString();
                 L_DGateway_Address.Text = NetworkInterface.DefaultGateway == null ? "" : NetworkInterface.DefaultGateway.ToString();
                 L_PC_Address.Text = NetworkInterface.LocalAddress.ToString();
-                L_DGateway_Address.Text = NetworkInterface.DefaultGateway == null ? "?": NetworkInterface.DefaultGateway.ToString();
+                L_DGateway_Address.Text = NetworkInterface.DefaultGateway == null ? "?" : NetworkInterface.DefaultGateway.ToString();
                 L_Host_Address.Text = Properties.Settings.Default.Host;
             });
         }
@@ -179,9 +177,9 @@ namespace InternetStatus
 
                         Invoke((MethodInvoker)delegate
                         {
-                            if (reply.RoundtripTime > 149 || reply.RoundtripTime == 0)
-                                L_Ping.ForeColor = Color.Red;
-                            else L_Ping.ForeColor = reply.RoundtripTime > 89 && reply.RoundtripTime < 150 ? Color.Orange : Color.Green;
+                            L_Ping.ForeColor = reply.RoundtripTime > 149 || reply.RoundtripTime == 0
+                                ? Color.Red
+                                : reply.RoundtripTime > 89 && reply.RoundtripTime < 150 ? Color.Orange : Color.Green;
 
                             L_Ping.Text = reply.Status == IPStatus.TimedOut ? $"{Properties.Settings.Default.Timeout}+ ms" : $"{reply.RoundtripTime} ms";
 
