@@ -122,29 +122,16 @@ namespace InternetStatus.Properties {
         
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-<<<<<<< HEAD
         internal static System.Drawing.Bitmap PC_off {
             get {
                 object obj = ResourceManager.GetObject("PC_off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+       
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        /// </summary>
-        internal static System.Drawing.Bitmap PC_off {
-            get {
-                object obj = ResourceManager.GetObject("PC_off", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-=======
->>>>>>> d9722fd014fc2b73634d2f5931a5b62ab73a91db
         /// </summary>
         internal static System.Drawing.Bitmap PC_on {
             get {
