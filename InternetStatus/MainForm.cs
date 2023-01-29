@@ -22,8 +22,8 @@ namespace InternetStatus
         private readonly Ping ping = new Ping();
         private bool working = false;
 
-        private const string ON_BLACK_HEX_COLOR = "#FF000000";
-        private const string OFF_GRAY_HEX_COLOR = "#FF848484";
+        private const string ON_BLACK_HEX_COLOR = "#000000";
+        private const string OFF_GRAY_HEX_COLOR = "#727272";
         private const string VERSION = "1.1";
 
         public MainForm()
@@ -50,8 +50,8 @@ namespace InternetStatus
         {
             Invoke((MethodInvoker)delegate
             {
-                L_PC_Address.Text = Internet.LocalAddress == null ? "" : Internet.LocalAddress.ToString();
-                L_DGateway_Address.Text = Internet.DefaultGateway == null ? "" : Internet.DefaultGateway.ToString();
+                L_PC_Address.Text = NetworkInterface.LocalAddress == null ? "" : NetworkInterface.LocalAddress.ToString();
+                L_DGateway_Address.Text = NetworkInterface.DefaultGateway == null ? "" : NetworkInterface.DefaultGateway.ToString();
                 L_Host_Address.Text = Properties.Settings.Default.Host;
             });
         }
@@ -76,43 +76,64 @@ namespace InternetStatus
             UpdateData();
             switch (connection)
             {
-                case Connections.PC:
-                    InternetStatusT = "Network is unreachable";
-                    PicPC.Image = Properties.Resources.PC_on;
-                    PicConnection1.Image = Properties.Resources.Connection_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                case Connections.NoLocal:
+                    InternetStatusT = "No avaible network interface";
+
+                    PicPC.Image = Properties.Resources.PC_off;
+                    PicConnection1.Image = Properties.Resources.Connection_off;  // PC [* * *] Gateway * * * Host
+                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
 
                     PicRouter.Image = Properties.Resources.Router_off;
-                    PicConnection2.Image = Properties.Resources.Connection_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
+                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
 
                     PicInternet.Image = Properties.Resources.Internet_off;
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
                     break;
+
+
+                case Connections.PC:
+                    InternetStatusT = "Network is unreachable";
+
+                    PicPC.Image = Properties.Resources.PC_on;
+                    PicConnection1.Image = Properties.Resources.Connection_off;  // PC [* * *] Gateway * * * Host
+                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+
+                    PicRouter.Image = Properties.Resources.Router_off;
+                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
+                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+
+                    PicInternet.Image = Properties.Resources.Internet_off;
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                    break;
+
 
                 case Connections.Router:
                     InternetStatusT = "No connection";
+
                     PicPC.Image = Properties.Resources.PC_on;
-                    PicConnection1.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                    PicConnection1.Image = Properties.Resources.Connection_on;  // PC [* * *] Gateway * * * Host
+                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
                     PicRouter.Image = Properties.Resources.Router_on;
-                    PicConnection2.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
+                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
                     PicInternet.Image = Properties.Resources.Internet_off;
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
                     break;
 
+
                 case Connections.Internet:
                     InternetStatusT = "Connected";
+
                     PicPC.Image = Properties.Resources.PC_on;
-                    PicConnection1.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                    PicConnection1.Image = Properties.Resources.Connection_on;  // PC [* * *] Gateway * * * Host
+                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
                     PicRouter.Image = Properties.Resources.Router_on;
-                    PicConnection2.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                    PicConnection2.Image = Properties.Resources.Connection_on;  // PC * * * Gateway [* * *] Host
+                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
                     PicInternet.Image = Properties.Resources.Internet_on;
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
@@ -124,7 +145,7 @@ namespace InternetStatus
         {
             while (working)
             {
-                if (Internet.TryDefaultGateway(ping))
+                if (NetworkInterface.TryDefaultGateway(ping))
                 {
                     Invoke((MethodInvoker)delegate
                     {
@@ -133,7 +154,7 @@ namespace InternetStatus
                     });
                     try
                     {
-                        PingReply reply = ping.Send(Properties.Settings.Default.Host, Properties.Settings.Default.Timeout);
+                        PingReply reply = ping.Send(Properties.Settings.Default.Host, Properties.Settings.Default.Timeout, new byte[Properties.Settings.Default.Bytes]);
 
                         if (reply.Status == IPStatus.Success)
                             DrawConnection(Connections.Internet);
@@ -166,7 +187,11 @@ namespace InternetStatus
                 }
                 else
                 {
-                    DrawConnection(Connections.PC);
+                    if (L_PC_Address.Text == "")
+                        DrawConnection(Connections.NoLocal);
+                    else
+                        DrawConnection(Connections.PC);
+
                     Invoke((MethodInvoker)delegate
                     {
                         L_PingTitle.Visible = false;
@@ -221,7 +246,7 @@ namespace InternetStatus
 
         private void Open_Gateway_web(object sender, EventArgs e)
         {
-            Process.Start("http://" + Internet.DefaultGateway.ToString());
+            Process.Start("http://" + NetworkInterface.DefaultGateway.ToString());
         }
 
         private void Open_ncpa_cpl(object sender, EventArgs e)

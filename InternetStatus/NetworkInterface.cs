@@ -8,17 +8,20 @@ namespace InternetStatus
 {
     internal enum Connections // Working till ->>
     {
+        NoLocal,
         PC,
         Router,
         Internet
     }
 
-    internal class Internet
+    internal class NetworkInterface
     {
         private const int GatewayTimeout = 2;
+
         internal const string Default_Host = "8.8.8.8";
         internal const int Default_Timeout = 2000;
         internal const int Default_UpdateFreq = 500;
+        internal const int Default_BufferBytes = 32;
 
         internal static bool TryDefaultGateway(Ping ping)
         {
@@ -56,7 +59,7 @@ namespace InternetStatus
 
         //Local Address Property
         #region https://stackoverflow.com/questions/6803073/get-local-ip-address (LocalAddress Property)
-        internal static IPAddress LocalAddress => NetworkInterface
+        internal static IPAddress LocalAddress => System.Net.NetworkInformation.NetworkInterface
         .GetAllNetworkInterfaces()
         .FirstOrDefault(ni =>
             ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet

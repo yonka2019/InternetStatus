@@ -123,6 +123,16 @@ namespace InternetStatus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PC_off {
+            get {
+                object obj = ResourceManager.GetObject("PC_off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PC_on {
             get {
                 object obj = ResourceManager.GetObject("PC_on", resourceCulture);

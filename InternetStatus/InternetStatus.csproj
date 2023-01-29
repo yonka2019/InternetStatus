@@ -73,7 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Internet.cs" />
+    <Compile Include="NetworkInterface.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +152,7 @@
     <None Include="Resources\reset_20px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pc_off.png" />
     <None Include="Resources\sun_25px.png" />
     <None Include="Resources\copyright_30px.png" />
     <None Include="Resources\first_quarter_25px.png" />
