@@ -40,17 +40,18 @@ namespace InternetStatus
             this.L_PingTitle = new System.Windows.Forms.Label();
             this.L_Sep = new System.Windows.Forms.Label();
             this.tp = new System.Windows.Forms.ToolTip(this.components);
+            this.L_DGateway_Address = new System.Windows.Forms.Label();
+            this.DarkModeButton = new System.Windows.Forms.Button();
             this.CPPB = new System.Windows.Forms.PictureBox();
             this.B_Start = new System.Windows.Forms.Button();
             this.B_Settings = new System.Windows.Forms.Button();
             this.PicInternet = new System.Windows.Forms.PictureBox();
             this.PicRouter = new System.Windows.Forms.PictureBox();
             this.PicPC = new System.Windows.Forms.PictureBox();
-            this.L_DGateway_Address = new System.Windows.Forms.Label();
-            this.PicConnection1 = new System.Windows.Forms.PictureBox();
-            this.PicConnection2 = new System.Windows.Forms.PictureBox();
             this.L_PC_Address = new System.Windows.Forms.Label();
             this.L_Host_Address = new System.Windows.Forms.Label();
+            this.PicConnection1 = new System.Windows.Forms.PictureBox();
+            this.PicConnection2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PingChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CPPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicInternet)).BeginInit();
@@ -120,6 +121,31 @@ namespace InternetStatus
             this.L_Sep.TabIndex = 14;
             this.L_Sep.Text = "――――――――――――――――――――――――――――――――――――――――――――――――――――";
             // 
+            // L_DGateway_Address
+            // 
+            this.L_DGateway_Address.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_DGateway_Address.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.L_DGateway_Address.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.L_DGateway_Address.Location = new System.Drawing.Point(320, 90);
+            this.L_DGateway_Address.Name = "L_DGateway_Address";
+            this.L_DGateway_Address.Size = new System.Drawing.Size(186, 19);
+            this.L_DGateway_Address.TabIndex = 20;
+            this.L_DGateway_Address.Text = "Address";
+            this.L_DGateway_Address.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tp.SetToolTip(this.L_DGateway_Address, "(Open)");
+            this.L_DGateway_Address.Click += new System.EventHandler(this.Open_Gateway_web);
+            // 
+            // DarkModeButton
+            // 
+            this.DarkModeButton.Image = global::InternetStatus.Properties.Resources.first_quarter_25px;
+            this.DarkModeButton.Location = new System.Drawing.Point(744, 402);
+            this.DarkModeButton.Name = "DarkModeButton";
+            this.DarkModeButton.Size = new System.Drawing.Size(32, 32);
+            this.DarkModeButton.TabIndex = 23;
+            this.tp.SetToolTip(this.DarkModeButton, "Enable Dark mode");
+            this.DarkModeButton.UseVisualStyleBackColor = true;
+            this.DarkModeButton.Click += new System.EventHandler(this.DarkModeButton_Click);
+            // 
             // CPPB
             // 
             this.CPPB.Image = global::InternetStatus.Properties.Resources.Copyright;
@@ -187,38 +213,6 @@ namespace InternetStatus
             this.tp.SetToolTip(this.PicPC, "This PC");
             this.PicPC.Click += new System.EventHandler(this.Open_ncpa_cpl);
             // 
-            // L_DGateway_Address
-            // 
-            this.L_DGateway_Address.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_DGateway_Address.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.L_DGateway_Address.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.L_DGateway_Address.Location = new System.Drawing.Point(320, 90);
-            this.L_DGateway_Address.Name = "L_DGateway_Address";
-            this.L_DGateway_Address.Size = new System.Drawing.Size(186, 19);
-            this.L_DGateway_Address.TabIndex = 20;
-            this.L_DGateway_Address.Text = "Address";
-            this.L_DGateway_Address.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.tp.SetToolTip(this.L_DGateway_Address, "(Open)");
-            this.L_DGateway_Address.Click += new System.EventHandler(this.Open_Gateway_web);
-            // 
-            // PicConnection1
-            // 
-            this.PicConnection1.Image = ((System.Drawing.Image)(resources.GetObject("PicConnection1.Image")));
-            this.PicConnection1.Location = new System.Drawing.Point(243, 22);
-            this.PicConnection1.Name = "PicConnection1";
-            this.PicConnection1.Size = new System.Drawing.Size(55, 55);
-            this.PicConnection1.TabIndex = 8;
-            this.PicConnection1.TabStop = false;
-            // 
-            // PicConnection2
-            // 
-            this.PicConnection2.Image = ((System.Drawing.Image)(resources.GetObject("PicConnection2.Image")));
-            this.PicConnection2.Location = new System.Drawing.Point(529, 22);
-            this.PicConnection2.Name = "PicConnection2";
-            this.PicConnection2.Size = new System.Drawing.Size(55, 55);
-            this.PicConnection2.TabIndex = 7;
-            this.PicConnection2.TabStop = false;
-            // 
             // L_PC_Address
             // 
             this.L_PC_Address.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -243,11 +237,30 @@ namespace InternetStatus
             this.L_Host_Address.Text = "Address";
             this.L_Host_Address.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // PicConnection1
+            // 
+            this.PicConnection1.Image = ((System.Drawing.Image)(resources.GetObject("PicConnection1.Image")));
+            this.PicConnection1.Location = new System.Drawing.Point(243, 22);
+            this.PicConnection1.Name = "PicConnection1";
+            this.PicConnection1.Size = new System.Drawing.Size(55, 55);
+            this.PicConnection1.TabIndex = 8;
+            this.PicConnection1.TabStop = false;
+            // 
+            // PicConnection2
+            // 
+            this.PicConnection2.Image = ((System.Drawing.Image)(resources.GetObject("PicConnection2.Image")));
+            this.PicConnection2.Location = new System.Drawing.Point(529, 22);
+            this.PicConnection2.Name = "PicConnection2";
+            this.PicConnection2.Size = new System.Drawing.Size(55, 55);
+            this.PicConnection2.TabIndex = 7;
+            this.PicConnection2.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 528);
+            this.Controls.Add(this.DarkModeButton);
             this.Controls.Add(this.L_Host_Address);
             this.Controls.Add(this.L_PC_Address);
             this.Controls.Add(this.L_DGateway_Address);
@@ -304,6 +317,7 @@ namespace InternetStatus
         private System.Windows.Forms.Label L_DGateway_Address;
         private System.Windows.Forms.Label L_PC_Address;
         private System.Windows.Forms.Label L_Host_Address;
+        private System.Windows.Forms.Button DarkModeButton;
     }
 }
 

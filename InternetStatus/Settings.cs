@@ -17,6 +17,7 @@ namespace InternetStatus
             TB_Host.Text = Properties.Settings.Default.Host;
             NUM_Timeout.Value = Properties.Settings.Default.Timeout;
             NUM_UpdateFreq.Value = Properties.Settings.Default.UpdateFreq;
+            NUM_Bytes.Value = Properties.Settings.Default.Bytes;
         }
 
         private void B_Apply_Click(object sender, EventArgs e)
@@ -24,6 +25,7 @@ namespace InternetStatus
             Properties.Settings.Default.Host = TB_Host.Text;
             Properties.Settings.Default.Timeout = (int)NUM_Timeout.Value;
             Properties.Settings.Default.UpdateFreq = (int)NUM_UpdateFreq.Value;
+            Properties.Settings.Default.Bytes = (int)NUM_Bytes.Value;
 
             Properties.Settings.Default.Save();
 
@@ -32,12 +34,16 @@ namespace InternetStatus
         }
 
         private void B_Host_Reset_Click(object sender, EventArgs e) =>
-            TB_Host.Text = Internet.Default_Host;
+            TB_Host.Text = NetworkInterface.Default_Host;
 
         private void B_Timeout_Reset_Click(object sender, EventArgs e) =>
-            NUM_Timeout.Value = Internet.Default_Timeout;
+            NUM_Timeout.Value = NetworkInterface.Default_Timeout;
 
         private void B_UpdateFreq_Reset_Click(object sender, EventArgs e) =>
-            NUM_UpdateFreq.Value = Internet.Default_UpdateFreq;
+            NUM_UpdateFreq.Value = NetworkInterface.Default_UpdateFreq;
+
+        private void B_Bytes_Reset_Click(object sender, EventArgs e) =>
+            NUM_Bytes.Value = NetworkInterface.Default_BufferBytes;
+
     }
 }

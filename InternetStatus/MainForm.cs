@@ -1,9 +1,12 @@
-﻿using System;
+﻿using darknet.forms;
+using System;
 using System.Diagnostics;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Windows.Forms;
+using darknet.forms;
 
 /*
 * - - - - - - - - - - - - -
@@ -16,18 +19,33 @@ namespace InternetStatus
 {
     public partial class MainForm : Form
     {
+        public static bool darkModeActivated = false;
         private readonly double[] pingArray = new double[60];
         private readonly Ping ping = new Ping();
         private bool working = false;
 
-        private const string ON_BLACK_HEX_COLOR = "#FF000000";
-        private const string OFF_GRAY_HEX_COLOR = "#FF848484";
+        private const string ON_BLACK_HEX_COLOR = "#000000";
+        private const string OFF_GRAY_HEX_COLOR = "#727272";
         private const string VERSION = "1.1";
 
         public MainForm()
         {
             InitializeComponent();
             tp.SetToolTip(CPPB, $"{tp.GetToolTip(CPPB)} (v{VERSION})");
+        }
+
+        public MainForm(bool darkModeActivated) : this()// dark mode changed
+        {
+            if (darkModeActivated)
+            {
+                DarkModeButton.Image = Properties.Resources.sun_25px;
+                tp.SetToolTip(DarkModeButton, "Disable Dark mode");
+            }
+            else
+            {
+                DarkModeButton.Image = Properties.Resources.first_quarter_25px;
+                tp.SetToolTip(DarkModeButton, "Enable Dark mode");
+            }
         }
 
         internal void UpdateData()
@@ -57,48 +75,77 @@ namespace InternetStatus
                 tp.SetToolTip(B_Start, "Start");
             }
         }
-        private void DrawConnection(Connections connection)
+        private void DrawConnection(Connections connection)  //  " PC  * * *  Gateway  * * *  Host "
         {
             UpdateData();
             switch (connection)
             {
-                case Connections.PC:
-                    InternetStatusT = "Network is unreachable";
-                    PicPC.Image = Properties.Resources.PC_on;
-                    PicConnection1.Image = Properties.Resources.Connection_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                case Connections.NoLocal:
+                    InternetStatusT = "No avaible network interface";  // OFF - OFF - OFF
+
+                    PicPC.Image = Properties.Resources.PC_off;
+                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+
+                    PicConnection1.Image = Properties.Resources.Connection_off;  // PC [* * *] Gateway * * * Host
 
                     PicRouter.Image = Properties.Resources.Router_off;
-                    PicConnection2.Image = Properties.Resources.Connection_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+
+                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
 
                     PicInternet.Image = Properties.Resources.Internet_off;
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
                     break;
+
+
+                case Connections.PC:
+                    InternetStatusT = "Network is unreachable";  // ON - OFF - OFF
+
+                    PicPC.Image = Properties.Resources.PC_on;
+                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+
+                    PicConnection1.Image = Properties.Resources.Connection_off;  // PC [* * *] Gateway * * * Host
+
+                    PicRouter.Image = Properties.Resources.Router_off;
+                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+
+                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
+
+                    PicInternet.Image = Properties.Resources.Internet_off;
+                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                    break;
+
 
                 case Connections.Router:
-                    InternetStatusT = "No connection";
+                    InternetStatusT = "No connection";  // ON - ON - OFF
+
                     PicPC.Image = Properties.Resources.PC_on;
-                    PicConnection1.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+
+                    PicConnection1.Image = Properties.Resources.Connection_on;  // PC [* * *] Gateway * * * Host
 
                     PicRouter.Image = Properties.Resources.Router_on;
-                    PicConnection2.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+
+                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
 
                     PicInternet.Image = Properties.Resources.Internet_off;
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
                     break;
 
+
                 case Connections.Internet:
-                    InternetStatusT = "Connected";
+                    InternetStatusT = "Connected";  // ON - ON - ON
+
                     PicPC.Image = Properties.Resources.PC_on;
-                    PicConnection1.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+
+                    PicConnection1.Image = Properties.Resources.Connection_on;  // PC [* * *] Gateway * * * Host
 
                     PicRouter.Image = Properties.Resources.Router_on;
-                    PicConnection2.Image = Properties.Resources.Connection_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+
+                    PicConnection2.Image = Properties.Resources.Connection_on;  // PC * * * Gateway [* * *] Host
 
                     PicInternet.Image = Properties.Resources.Internet_on;
                     L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
@@ -110,7 +157,7 @@ namespace InternetStatus
         {
             while (working)
             {
-                if (Internet.TryDefaultGateway(ping))
+                if (NetworkInterface.TryDefaultGateway(ping))
                 {
                     Invoke((MethodInvoker)delegate
                     {
@@ -119,7 +166,7 @@ namespace InternetStatus
                     });
                     try
                     {
-                        PingReply reply = ping.Send(Properties.Settings.Default.Host, Properties.Settings.Default.Timeout);
+                        PingReply reply = ping.Send(Properties.Settings.Default.Host, Properties.Settings.Default.Timeout, new byte[Properties.Settings.Default.Bytes]);
 
                         if (reply.Status == IPStatus.Success)
                             DrawConnection(Connections.Internet);
@@ -134,15 +181,9 @@ namespace InternetStatus
                         {
                             if (reply.RoundtripTime > 149 || reply.RoundtripTime == 0)
                                 L_Ping.ForeColor = Color.Red;
-                            else if (reply.RoundtripTime > 89 && reply.RoundtripTime < 150)
-                                L_Ping.ForeColor = Color.Orange;
-                            else
-                                L_Ping.ForeColor = Color.Green;
+                            else L_Ping.ForeColor = reply.RoundtripTime > 89 && reply.RoundtripTime < 150 ? Color.Orange : Color.Green;
 
-                            if (reply.Status == IPStatus.TimedOut)
-                                L_Ping.Text = $"{Properties.Settings.Default.Timeout}+ ms";
-                            else
-                                L_Ping.Text = $"{reply.RoundtripTime} ms";
+                            L_Ping.Text = reply.Status == IPStatus.TimedOut ? $"{Properties.Settings.Default.Timeout}+ ms" : $"{reply.RoundtripTime} ms";
 
                             UpdatePingChart();
                         });
@@ -158,7 +199,11 @@ namespace InternetStatus
                 }
                 else
                 {
-                    DrawConnection(Connections.PC);
+                    if (L_PC_Address.Text == "")
+                        DrawConnection(Connections.NoLocal);
+                    else
+                        DrawConnection(Connections.PC);
+
                     Invoke((MethodInvoker)delegate
                     {
                         L_PingTitle.Visible = false;
@@ -211,8 +256,10 @@ namespace InternetStatus
                  });
         }
 
-        private void Open_Gateway_web(object sender, EventArgs e) =>
-            Process.Start("http://" + Internet.DefaultGateway.ToString());
+        private void Open_Gateway_web(object sender, EventArgs e)
+        {
+            Process.Start("http://" + NetworkInterface.DefaultGateway.ToString());
+        }
 
         private void Open_ncpa_cpl(object sender, EventArgs e)
         {
@@ -221,6 +268,17 @@ namespace InternetStatus
                 UseShellExecute = true
             };
             Process.Start(info);
+        }
+
+        private void DarkModeButton_Click(object sender, EventArgs e)
+        {
+            darkModeActivated = !darkModeActivated;
+
+            MainForm form = new MainForm(darkModeActivated);
+            DarkNet.SetDarkModeAllowedForWindow(form, darkModeActivated);
+            Hide();
+            form.ShowDialog();
+            Close();
         }
     }
 }
