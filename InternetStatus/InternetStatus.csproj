@@ -147,6 +147,8 @@
     <None Include="Resources\reset_20px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pc_off.png" />
+    <None Include="Resources\sun_25px.png" />
     <None Include="Resources\copyright_30px.png" />
     <Content Include="Resources\icons8_signal.ico" />
   </ItemGroup>
