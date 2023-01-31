@@ -52,7 +52,7 @@ namespace InternetStatus
             {
                 L_PC_Address.Text = NetworkInterface.LocalAddress == null ? "" : NetworkInterface.LocalAddress.ToString();
                 L_DGateway_Address.Text = NetworkInterface.DefaultGateway == null ? "" : NetworkInterface.DefaultGateway.ToString();
-                L_PC_Address.Text = NetworkInterface.LocalAddress.ToString();
+                L_PC_Address.Text = NetworkInterface.LocalAddress == null ? "" : NetworkInterface.LocalAddress.ToString();
                 L_DGateway_Address.Text = NetworkInterface.DefaultGateway == null ? "?" : NetworkInterface.DefaultGateway.ToString();
                 L_Host_Address.Text = Properties.Settings.Default.Host;
             });
