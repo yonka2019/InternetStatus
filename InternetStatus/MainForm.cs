@@ -24,27 +24,17 @@ namespace InternetStatus
 
         private const string ON_BLACK_HEX_COLOR = "#000000";
         private const string OFF_GRAY_HEX_COLOR = "#727272";
-        private const string VERSION = "1.1";
+        private const string VERSION = "1.2";
+
+        private Connection prevConnection;
 
         public MainForm()
         {
             InitializeComponent();
             tp.SetToolTip(CPPB, $"{tp.GetToolTip(CPPB)} (v{VERSION})");
+            DarkNet.SetDarkModeAllowedForWindow(this, darkModeActivated);
         }
 
-        public MainForm(bool darkModeActivated) : this()// dark mode changed
-        {
-            if (darkModeActivated)
-            {
-                DarkModeButton.Image = Properties.Resources.sun_25px;
-                tp.SetToolTip(DarkModeButton, "Disable Dark mode");
-            }
-            else
-            {
-                DarkModeButton.Image = Properties.Resources.first_quarter_25px;
-                tp.SetToolTip(DarkModeButton, "Enable Dark mode");
-            }
-        }
 
         internal void UpdateData()
         {
@@ -73,82 +63,87 @@ namespace InternetStatus
                 tp.SetToolTip(B_Start, "Start");
             }
         }
-        private void DrawConnection(Connections connection)  //  " PC  * * *  Gateway  * * *  Host "
+        private void DrawConnection(Connection connection)  //  " PC  * * *  Gateway  * * *  Host "
         {
             UpdateData();
-            switch (connection)
+            if (connection != prevConnection)
             {
-                case Connections.NoLocal:
-                    InternetStatusT = "No avaible network interface";  // OFF - OFF - OFF
+                switch (connection)
+                {
+                    case Connection.NoLocal:
+                        InternetStatusT = "No avaible network interface";  // OFF - OFF - OFF
 
-                    PicPC.Image = Properties.Resources.PC_off;
-                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                        PicPC.Image = Properties.Resources.PC_off;
+                        L_PC_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
 
-                    PicConnection1.Image = Properties.Resources.Connection_off;  // PC [* * *] Gateway * * * Host
+                        PicConnection1.Image = Properties.Resources.Connection_off;  // PC [* * *] Gateway * * * Host
 
-                    PicRouter.Image = Properties.Resources.Router_off;
-                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                        PicRouter.Image = Properties.Resources.Router_off;
+                        L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
 
-                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
+                        PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
 
-                    PicInternet.Image = Properties.Resources.Internet_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
-                    break;
-
-
-                case Connections.PC:
-                    InternetStatusT = "Network is unreachable";  // ON - OFF - OFF
-
-                    PicPC.Image = Properties.Resources.PC_on;
-                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
-
-                    PicConnection1.Image = Properties.Resources.Connection_off;  // PC [* * *] Gateway * * * Host
-
-                    PicRouter.Image = Properties.Resources.Router_off;
-                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
-
-                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
-
-                    PicInternet.Image = Properties.Resources.Internet_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
-                    break;
+                        PicInternet.Image = Properties.Resources.Internet_off;
+                        L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                        break;
 
 
-                case Connections.Router:
-                    InternetStatusT = "No connection";  // ON - ON - OFF
+                    case Connection.PC:
+                        InternetStatusT = "Network is unreachable";  // ON - OFF - OFF
 
-                    PicPC.Image = Properties.Resources.PC_on;
-                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                        PicPC.Image = Properties.Resources.PC_on;
+                        L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
-                    PicConnection1.Image = Properties.Resources.Connection_on;  // PC [* * *] Gateway * * * Host
+                        PicConnection1.Image = Properties.Resources.Connection_off;  // PC [* * *] Gateway * * * Host
 
-                    PicRouter.Image = Properties.Resources.Router_on;
-                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                        PicRouter.Image = Properties.Resources.Router_off;
+                        L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
 
-                    PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
+                        PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
 
-                    PicInternet.Image = Properties.Resources.Internet_off;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
-                    break;
+                        PicInternet.Image = Properties.Resources.Internet_off;
+                        L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                        break;
 
 
-                case Connections.Internet:
-                    InternetStatusT = "Connected";  // ON - ON - ON
+                    case Connection.Router:
+                        InternetStatusT = "No connection";  // ON - ON - OFF
 
-                    PicPC.Image = Properties.Resources.PC_on;
-                    L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                        PicPC.Image = Properties.Resources.PC_on;
+                        L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
-                    PicConnection1.Image = Properties.Resources.Connection_on;  // PC [* * *] Gateway * * * Host
+                        PicConnection1.Image = Properties.Resources.Connection_on;  // PC [* * *] Gateway * * * Host
 
-                    PicRouter.Image = Properties.Resources.Router_on;
-                    L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                        PicRouter.Image = Properties.Resources.Router_on;
+                        L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
 
-                    PicConnection2.Image = Properties.Resources.Connection_on;  // PC * * * Gateway [* * *] Host
+                        PicConnection2.Image = Properties.Resources.Connection_off;  // PC * * * Gateway [* * *] Host
 
-                    PicInternet.Image = Properties.Resources.Internet_on;
-                    L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
-                    break;
+                        PicInternet.Image = Properties.Resources.Internet_off;
+                        L_Host_Address.ForeColor = ColorTranslator.FromHtml(OFF_GRAY_HEX_COLOR);
+                        break;
+
+
+                    case Connection.Internet:
+                        InternetStatusT = "Connected";  // ON - ON - ON
+
+                        PicPC.Image = Properties.Resources.PC_on;
+                        L_PC_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+
+                        PicConnection1.Image = Properties.Resources.Connection_on;  // PC [* * *] Gateway * * * Host
+
+                        PicRouter.Image = Properties.Resources.Router_on;
+                        L_DGateway_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+
+                        PicConnection2.Image = Properties.Resources.Connection_on;  // PC * * * Gateway [* * *] Host
+
+                        PicInternet.Image = Properties.Resources.Internet_on;
+                        L_Host_Address.ForeColor = ColorTranslator.FromHtml(ON_BLACK_HEX_COLOR);
+                        break;
+                }
             }
+
+            prevConnection = connection;
         }
 
         private void Pinger()
@@ -167,9 +162,9 @@ namespace InternetStatus
                         PingReply reply = ping.Send(Properties.Settings.Default.Host, Properties.Settings.Default.Timeout, new byte[Properties.Settings.Default.Bytes]);
 
                         if (reply.Status == IPStatus.Success)
-                            DrawConnection(Connections.Internet);
+                            DrawConnection(Connection.Internet);
                         else
-                            DrawConnection(Connections.Router);
+                            DrawConnection(Connection.Router);
 
                         pingArray[pingArray.Length - 1] = reply.RoundtripTime;
 
@@ -198,9 +193,9 @@ namespace InternetStatus
                 else
                 {
                     if (L_PC_Address.Text == "")
-                        DrawConnection(Connections.NoLocal);
+                        DrawConnection(Connection.NoLocal);
                     else
-                        DrawConnection(Connections.PC);
+                        DrawConnection(Connection.PC);
 
                     Invoke((MethodInvoker)delegate
                     {
@@ -266,17 +261,6 @@ namespace InternetStatus
                 UseShellExecute = true
             };
             Process.Start(info);
-        }
-
-        private void DarkModeButton_Click(object sender, EventArgs e)
-        {
-            darkModeActivated = !darkModeActivated;
-
-            MainForm form = new MainForm(darkModeActivated);
-            DarkNet.SetDarkModeAllowedForWindow(form, darkModeActivated);
-            Hide();
-            form.ShowDialog();
-            Close();
         }
     }
 }

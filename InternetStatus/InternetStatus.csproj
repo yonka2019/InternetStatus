@@ -134,12 +134,6 @@
     <None Include="Resources\workstation_75px.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\more_55px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\more_55px_off.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\play_30px.png" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +150,8 @@
     <None Include="Resources\sun_25px.png" />
     <None Include="Resources\copyright_30px.png" />
     <None Include="Resources\first_quarter_25px.png" />
+    <Content Include="Resources\icons8-dots-55.png" />
+    <Content Include="Resources\icons8-dots.gif" />
     <Content Include="Resources\icons8_signal.ico" />
   </ItemGroup>
   <ItemGroup>

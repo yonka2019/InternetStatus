@@ -139,28 +139,6 @@
         hBBCCCGEEEIMBuf+Aykkn0lbSPfHAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="PicConnection1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAYAAACo29JGAAAABGdBTUEAALGPC/xhBQAAATxJREFUaEPt
-        0k1Kw1AUxfHsQQcqomM7VlAoCLoBXYIVR+IeQr6IuA3dQEVBnJlxN9GKlDrpWNH6T7mB8gi8pLPK+cGh
-        wjv3mjYvEBEREREREREREVk1aZr2kiQZkDHpx3G8Z0eNseOU2aLcwfwbObGjxrIs6zD/aM8xYMeFHS2H
-        BTcsmjmZhmG4ZRUvHuqYmV9nxw/pWsWL/7dNf7owPw/Pd22V9lgwcRdabq3iRffVma3yYhUvunfObJWx
-        Vdrh11qvWValbzUvruSoZr7M0CpedMvrWLdjxs1Ys1o7DP/PN1fiTl/VLJzwVjes4sUve8TMt7Pjixxa
-        xYu3v0n/c2F+Hp7v0irLYck5Kex63ed5vmNHjUVRdMDsM/kgT2TfjhpjZpcv88DnOyn4+8yORERERERE
-        RERERFZEEPwBLiVAONlAWNsAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="PicConnection2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAYAAACo29JGAAAABGdBTUEAALGPC/xhBQAAATxJREFUaEPt
-        0k1Kw1AUxfHsQQcqomM7VlAoCLoBXYIVR+IeQr6IuA3dQEVBnJlxN9GKlDrpWNH6T7mB8gi8pLPK+cGh
-        wjv3mjYvEBEREREREREREVk1aZr2kiQZkDHpx3G8Z0eNseOU2aLcwfwbObGjxrIs6zD/aM8xYMeFHS2H
-        BTcsmjmZhmG4ZRUvHuqYmV9nxw/pWsWL/7dNf7owPw/Pd22V9lgwcRdabq3iRffVma3yYhUvunfObJWx
-        Vdrh11qvWValbzUvruSoZr7M0CpedMvrWLdjxs1Ys1o7DP/PN1fiTl/VLJzwVjes4sUve8TMt7Pjixxa
-        xYu3v0n/c2F+Hp7v0irLYck5Kex63ed5vmNHjUVRdMDsM/kgT2TfjhpjZpcv88DnOyn4+8yORERERERE
-        RERERFZEEPwBLiVAONlAWNsAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>71</value>
   </metadata>

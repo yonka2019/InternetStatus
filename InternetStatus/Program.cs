@@ -14,8 +14,12 @@ namespace InternetStatus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             DarkNet.SetDarkModeAllowedForProcess(true);
-            Application.Run(new MainForm());
+            MainForm mainForm = new MainForm();
+            DarkNet.SetDarkModeAllowedForWindow(mainForm, true);
+
+            Application.Run(mainForm);
         }
     }
 }

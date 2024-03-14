@@ -5,7 +5,7 @@ using System.Net.Sockets;
 
 namespace InternetStatus
 {
-    internal enum Connections // Working till ->>
+    internal enum Connection // Working till ->>
     {
         NoLocal,
         PC,
